@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <title>Hyrule Compendium Search</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <script src="{{ url_for('static', filename='filter.js') }}"></script>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:40%;">Name</th>
+            <th style="width:10%;">ID</th>
+            <th style="width: 80%;">Image</th>
+        </tr>
+        {% for entry in entries %}
+            <tr>
+                <td><h3><a href="/{{entry["name"]}}">{{(entry["name"].title())}}</a></h3></td>
+                <td>{{entry["id"]}}</td>
+                <td><img onerror="this.src='{{ url_for('static', filename='dlc_img.png') }}'; this.width='110'" src="{{entry["image"]}}" width=70px height=70px></td>
+            </tr>
+        {% endfor %}
+    </table>
+  </body>
+</html>

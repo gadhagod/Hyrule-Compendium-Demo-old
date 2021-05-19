@@ -1,0 +1,24 @@
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>HCL | {{entry["name"]}}</title>
+</head>
+
+<center>
+    <body>
+        <img onerror="this.remove();" src="{{entry["image"]}}"><hr>
+        <h1>{{entry["name"].title()}}</h1>
+        <!--Image: {{entry.pop("image", None)}}-->
+        <!--Name: {{entry.pop("name", None)}}-->
+        {% for atr in entry %}
+            <p><b>{{atr}}</b>:<br>
+            {% if entry[atr] is string or entry[atr] is number %}
+                {{entry[atr]}}
+            {% elif entry[atr] is iterable and entry[atr] %}
+                {{", ".join(entry[atr])}}
+            {% elif entry[atr] is none%}
+                Unknown
+            {% endif %}
+            </p>
+        {% endfor %}
+    </body>
+</centery>

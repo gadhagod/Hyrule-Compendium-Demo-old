@@ -1,0 +1,3 @@
+flask
+gunicorn
+pyrule-compendium==2.4.0
